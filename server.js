@@ -11,6 +11,16 @@ app.get("/", (request, response) => {
   response.send("I love CodersX");
 });
 
+app.get("/todos", (req, res) => {
+  res.send(` 
+        <ul>
+            <li>Đi chợ</li>
+            <li>Đi Đi học</li>
+            <li>Hoàn thành target</li>
+            <li>Play guitar</li>
+        </ul>`);
+});
+
 // listen for requests :)
 app.listen(process.env.PORT, () => {
   console.log("Server listening on port " + process.env.PORT);
