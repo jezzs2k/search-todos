@@ -6,20 +6,17 @@
 const express = require("express");
 const app = express();
 
+app.set('view engine', 'pug')
+
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
-  response.send("I love CodersX");
+  response.render('./index.pug');
 });
 
-app.get("/todos", (req, res) => {
-  res.send(` 
-        <ul>
-            <li>Đi chợ</li>
-            <li>Đi Đi học</li>
-            <li>Hoàn thành target</li>
-            <li>Play guitar</li>
-        </ul>`);
-});
+app.get('todos', (req, res) =>{
+  res.render('./todo/index.pug')
+})
+ 
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
