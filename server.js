@@ -13,8 +13,8 @@ app.get("/", (request, response) => {
   response.render('./index.pug');
 });
 
-app.get('todos', (req, res) =>{
-  res.render('./todo/index.pug')
+app.get('/todos', (req, res) =>{
+  res.render('./todos/index.pug')
 })
  
 
