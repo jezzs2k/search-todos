@@ -1,5 +1,6 @@
+form(action='/todos/search' method='get')
+  input(type='text' name='p')
+  
 ul 
- li Đi chợ
- li Đi làm
- li Học tiếng anh
- li Đi ngủ
+ each todo in todos
+   li= todo.do

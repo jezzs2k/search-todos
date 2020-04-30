@@ -8,15 +8,27 @@ const app = express();
 
 app.set('view engine', 'pug')
 
+const todos = [
+  {id: 1, do: 'Nấu cơm'},
+  {id: 2, do: 'Ăn cơm'},
+  {id: 3, do: 'Đi ngủ'}
+];
+
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
   response.render('./index.pug');
 });
 
 app.get('/todos', (req, res) =>{
-  res.render('./todos/index.pug')
+  res.render('./todos/index.pug', {
+    todos
+  })
 })
- 
+
+app.get('/todos/search', (req, res) => {
+  const q = req.query;
+  console.log(q)
+})
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {
