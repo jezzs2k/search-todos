@@ -1,7 +1,10 @@
 form(action='/todos/search' method='get')
   input(type='text' name='p')
   
-ul 
+ul
   if todos.length > 0
-   each todo in todos
-     li= todo.do
+    each todo in todos
+      li= todo.do
+  else
+    p Khon ton tai todo
+    a(href='/todos') Quay ve trang goc

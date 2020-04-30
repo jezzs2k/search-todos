@@ -32,7 +32,7 @@ app.get("/todos/search", (req, res) => {
     todo => todo.do.toLowerCase().indexOf(q.toLowerCase()) !== -1
   );
   
-  res.render("./todos/index.pug", { matchTodo });
+  res.render("./todos/index.pug", { todos: [...matchTodo] });
 });
 
 // listen for requests :)
