@@ -6,29 +6,34 @@
 const express = require("express");
 const app = express();
 
-app.set('view engine', 'pug')
+app.set("view engine", "pug");
 
 const todos = [
-  {id: 1, do: 'Nấu cơm'},
-  {id: 2, do: 'Ăn cơm'},
-  {id: 3, do: 'Đi ngủ'}
+  { id: 1, do: "Nau com" },
+  { id: 2, do: "an com" },
+  { id: 3, do: "Di ngu" }
 ];
 
 // https://expressjs.com/en/starter/basic-routing.html
 app.get("/", (request, response) => {
-  response.render('./index.pug');
+  response.render("./index.pug");
 });
 
-app.get('/todos', (req, res) =>{
-  res.render('./todos/index.pug', {
+app.get("/todos", (req, res) => {
+  res.render("./todos/index.pug", {
     todos
-  })
-})
+  });
+});
 
-app.get('/todos/search', (req, res) => {
-  const q = req.query;
-  console.log(q)
-})
+app.get("/todos/search", (req, res) => {
+  const q = req.query.p;
+  
+  const matchTodo = todos.filter(
+    todo => todo.do.toLowerCase().indexOf(q.toLowerCase()) !== -1
+  );
+  
+  res.render("./todos/index.pug", { matchTodo });
+});
 
 // listen for requests :)
 app.listen(process.env.PORT, () => {

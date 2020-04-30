@@ -2,5 +2,6 @@ form(action='/todos/search' method='get')
   input(type='text' name='p')
   
 ul 
- each todo in todos
-   li= todo.do
+  if todos.length > 0
+   each todo in todos
+     li= todo.do
